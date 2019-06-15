@@ -15,5 +15,11 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("command", "pause");
         sendBroadcast(i);
 
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }
