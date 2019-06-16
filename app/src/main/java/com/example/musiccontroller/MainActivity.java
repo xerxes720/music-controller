@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int timeInHour =Integer.parseInt(timeInHourEditText.getText().toString());
                 int timeInMin =Integer.parseInt(timeInMinEditText.getText().toString());
-                int delay = (timeInHour * 60 * 60 + timeInMin * 60)*1000
+                int delay = (timeInHour * 60 * 60 + timeInMin * 60)*1000;
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
                     @Override
