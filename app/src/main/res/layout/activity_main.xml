@@ -42,6 +42,7 @@
         android:id="@+id/colon"/>
     <EditText
         android:layout_width="30dp"
+        android:id="@+id/time_in_min"
         android:layout_height="wrap_content"
         android:layout_below="@id/description"
         android:layout_toRightOf="@id/colon"
