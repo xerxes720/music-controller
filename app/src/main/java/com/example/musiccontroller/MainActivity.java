@@ -2,7 +2,8 @@ package com.example.musiccontroller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,15 +18,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
         Button startTimerButton = findViewById(R.id.start_timer);
-
         startTimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 EditText timeInHourEditText = findViewById(R.id.time_in_hour);
                 EditText timeInMinEditText = findViewById(R.id.time_in_min);
 
@@ -36,30 +33,16 @@ public class MainActivity extends AppCompatActivity {
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        Intent i = new Intent("com.android.music.musicservicecommand");
-                        i.putExtra("command", "pause");
-                        sendBroadcast(i);
-
+                        AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                        // Request audio focus for playback
+                        am.requestAudioFocus(null,
+                                // Use the music stream.
+                                AudioManager.STREAM_MUSIC,
+                                // Request permanent focus.
+                                AudioManager.AUDIOFOCUS_GAIN);
                     }
                 };
                 timer.schedule(task , delay);
-
-
-            }
-        });
-
-    }
-
-
-
-    void onClickButton(Button button){
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent("com.android.music.musicservicecommand");
-                i.putExtra("command", "pause");
-                sendBroadcast(i);
-
             }
         });
 
