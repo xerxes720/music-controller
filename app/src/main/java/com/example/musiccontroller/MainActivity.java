@@ -27,25 +27,15 @@ public class MainActivity extends AppCompatActivity {
         startTimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (threadId != 0){
-//                    Thread thread = Thread.currentThread();
-//                    thread.interrupt();
-//                    threadId = 0;
-//                }
-
                 //Give you set of Threads
                 Set<Thread> setOfThread = Thread.getAllStackTraces().keySet();
-
 
                 //Iterate over set to find yours
                 for(Thread thread : setOfThread){
                     if(thread.getId()==threadId){
-                        Log.e("interrupting" , "we're here with:"+Long.toString(thread.getId()));
                         thread.interrupt();
-                        Log.e("is it working" ,Long.toString(threadId) + ":" + Boolean.toString(thread.isInterrupted()) + String.valueOf(Thread.interrupted()));
                         threadId = 0;
                         break;
-
                     }
                 }
 
@@ -59,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 final int delay = (timeInHour * 60 * 60 + timeInMin * 60)*1000;
                 Toast toast = Toast.makeText(getApplicationContext(),"Your music will pause in " + delay/60/1000 + " minutes", Toast.LENGTH_SHORT);
                 toast.show();
-                Thread thread = new Thread(new TimerThread(delay , timeRemainingTextView));
+                Thread thread2 = new Thread(new TimerThread(delay , timeRemainingTextView));
+                Thread thread = new Thread(new TimerThread(thread2 , delay , timeRemainingTextView));
                 threadId = thread.getId();
                 Log.e("original id" , Long.toString(thread.getId()));
 
