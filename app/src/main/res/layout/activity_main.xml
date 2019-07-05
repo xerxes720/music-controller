@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="Music Controller" />
@@ -22,36 +22,73 @@
         android:layout_width="wrap_content"
         android:id="@+id/description"
         android:layout_height="wrap_content"
-        android:text="Type in time"
+        android:text="Type in time:"
         android:layout_below="@id/textView2"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Hour:"
+        android:id="@+id/hour_text_view"
+        android:layout_below="@id/description"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minute:"
+        android:padding="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_below="@id/description"
+        android:id="@+id/minute_text_view"
+        android:layout_toEndOf="@id/hour_text_view"/>
 
     <EditText
         android:id="@+id/time_in_hour"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/description"
+
+        android:layout_below="@id/hour_text_view"
         android:text="0"
         />
-    <TextView
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=":"
-        android:layout_marginTop="15dp"
-        android:layout_below="@id/description"
-        android:layout_toRightOf="@id/time_in_hour"
-        android:id="@+id/colon"/>
+        android:id="@+id/hour_spinner"
+        android:layout_toEndOf="@id/time_in_hour"
+        android:layout_below="@id/hour_text_view"
+        android:layout_marginTop="15dp">
+    </Spinner>
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=":"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:layout_below="@id/description"-->
+        <!--android:layout_toRightOf="@id/time_in_hour"-->
+        <!--android:id="@+id/colon"/>-->
     <EditText
         android:layout_width="30dp"
         android:id="@+id/time_in_min"
         android:layout_height="wrap_content"
-        android:layout_below="@id/description"
-        android:layout_toRightOf="@id/colon"
+        android:layout_below="@id/minute_text_view"
+        android:layout_marginLeft="90dp"
         android:text="1"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minute_spinner"
+        android:layout_toEndOf="@id/time_in_min"
+        android:layout_below="@id/minute_text_view"
+        android:layout_marginTop="15dp">
+
+    </Spinner>
     <Button
         android:id="@+id/start_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/colon"
+        android:layout_below="@id/time_in_min"
         android:layout_marginTop="50dp"
         android:layout_centerInParent="true"
 
